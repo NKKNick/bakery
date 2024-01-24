@@ -1,6 +1,11 @@
+{% extends 'Bakery/components/base.html'%}
 
+{% block title %}หน้าหลัก{% endblock %}
+{% block main %}
 <form action="{% url 'profile' %}" method="post">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">ok</button>
 </form>
+
+{% endblock %}

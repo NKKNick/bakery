@@ -3,23 +3,42 @@ from django.shortcuts import redirect, render
 from user_app.forms import CustomerForm
 from bakery_app.models import Product
 from django.contrib.auth.decorators import login_required
-from user_app.models import Cart, CartDetail
+from user_app.models import Cart, CartDetail, Customer
 
 # Create your views here.
 def index(req):
-<<<<<<< HEAD
-    return HTTPResponse("asdawdawd")
+    return render(req , "bakery/index.html")
 
-@login_required
-def profile(req):
-    if req.method == "POST":
-        form = CustomerForm(req.POST,instance=req.user)
+def test(req):
+    return render(req , "bakery/about.html")
+
+def profile(request):
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect("/user/cart")
+            if request.user.is_authenticated:
+                # Check if a Customer record already exists for the user
+                existing_customer = Customer.objects.filter(user=request.user).first()
+
+                if existing_customer:
+                    # Handle the case where a Customer record already exists
+                    return redirect('profile')  # Redirect to the user's profile or another view
+                else:
+                    # Create a new Customer record
+                    customer = form.save(commit=False)
+                    customer.user = request.user
+                    customer.save()
+                    # ... rest of your code
+                    return redirect('/')  # Redirect to the home page or another view
+            else:
+                return redirect('login')
+        else:
+            print(form.errors)
+            # Handle form errors or display them in the template
     else:
         form = CustomerForm()
-    return render(req,'bakery/userprofile.html',{'form':form})
+
+    return render(request, 'bakery/userprofile.html', {'form': form})
 
 @login_required
 def cart(request):
@@ -40,7 +59,7 @@ def cart(request):
         cart = None
         cart_detail = None
 
-    return render(request, "bakery/cart.html", {'count': count, 'total': total, 'cartDetail': cart_detail})
+    return render(request, "bakery/cart.html", {'count': count, 'total': total, 'cart_detail': cart_detail})
 
 @login_required
 def add_cart(req, id):
@@ -74,9 +93,3 @@ def delete_cart(req,id):
     cartDetail=CartDetail.objects.get(product=product,cart=cart)
     cartDetail.delete()
     return redirect("/cart")
-=======
-    return render(req , "bakery/index.html")
-
-def test(req):
-    return render(req , "bakery/about.html")
->>>>>>> c9674202030136d297220ae3be956e7871114653
