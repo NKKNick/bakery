@@ -12,6 +12,7 @@ def index(req):
 def test(req):
     return render(req , "bakery/about.html")
 
+@login_required
 def profile(request):
     if request.method == 'POST':
         form = CustomerForm(request.POST)
