@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Bakery</title>
+</head>
+<body>
+    <a href="/create_bakery/">Create</a>
+    {% for b in bakeries %}
+    <div>
+        <ul>
+            {% for bakery in bakeries %}
+                <p>{{ bakery }}</p>
+            {% endfor %}
+        </ul>
+        <a href="/update_bakery/{{b.id}}">UPDATE</a>
+        <a href="/delete_bakery/{{b.id}}">DELETE</a>
+    </div>
+    {% endfor %}
+    <a href="{% url 'index' %}">
+        <p>Back to Index</p>
+    </a>
+</body>
+</html>

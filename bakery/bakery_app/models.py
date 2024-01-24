@@ -5,3 +5,6 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.IntegerField()
     amount = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.name} ราคา {self.price} บาท จำนวน {self.amount} ชิ้น'

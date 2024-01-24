@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Bakery</title>
+</head>
+<body>
+    <h2>Create Bakery</h2>
+    <form method="post" action="/create_bakery/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <p>
+            Bakery Name
+            <input type="text" name="name" id="">   
+            Price
+            <input type="number" name="price" id="">
+            Amount
+            <input type="number" name="amount" id="">
+            <button type="submit">OK</button>
+        </div>
+    </form>
+    <a href="{% url 'show_bakery' %}">Show Bakeries</a>
+</body>
+</html>
