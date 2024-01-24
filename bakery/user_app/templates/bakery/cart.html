@@ -1,0 +1,11 @@
+<section>
+    <div>
+        <h1>ตะกร้าสินค้า</h1>
+        <h2>จำนวนสินค้าทั้งหมด {{count}}</h2>
+        <div>{% for i in cartdetail %}
+            <p>i.product.name</p>
+            <p>i.product.price</p>
+        </div>{% endfor %}
+        <h2>ราคารวม {{total}}</h2>
+    </div>
+</section>
