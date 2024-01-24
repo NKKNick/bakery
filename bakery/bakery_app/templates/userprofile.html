@@ -1,7 +1,9 @@
-{% extends 'Bakery/components/base.html'%}
+{% extends 'components/base.html'%}
 
-{% block title %}หน้าหลัก{% endblock %}
+{% block title %}ข้อมูลผู้ใช้{% endblock %}
 {% block main %}
+
+
 <form action="{% url 'profile' %}" method="post">
     {% csrf_token %}
     {{form.as_p}}
