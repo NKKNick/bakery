@@ -1,25 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Bakery</title>
-</head>
-<body>
-    <h2>Update Bakery</h2>
-    <form method="post" action="/update_bakery/{{bakeries.id}}/" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div>
-            <p>
-            Bakery Name
-            <input type="text" name="name" id="", value="{{bakeries.name}}">   
-            Price
-            <input type="number" name="price" id="", value="{{bakeries.price}}">
-            Amount
-            <input type="number" name="amount" id="", value="{{bakeries.amount}}">
-            <button type="submit">OK</button>
-        </div>
-    </form>
-    <a href="{% url 'show_bakery' %}">Cancel</a>
-</body>
-</html>
+{% extends 'components/base.html'%}
+
+{% block title %}แก้ไขขนม{% endblock %}
+  
+
+
+
+{% block main %}
+
+
+<h2>Update Bakery</h2>
+<form method="post" action="/update_bakery/{{bakeries.id}}/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <p>
+        Bakery Name
+        <input type="text" name="name" id="", value="{{bakeries.name}}">   
+        Price
+        <input type="number" name="price" id="", value="{{bakeries.price}}">
+        Amount
+        <input type="number" name="amount" id="", value="{{bakeries.amount}}">
+        <button type="submit">OK</button>
+    </div>
+</form>
+<a href="{% url 'show_bakery' %}">Cancel</a>
+
+  
+{% endblock %}
+    
+    
+

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from bakery_app.models import Product
 
 # Create your models here.
-class CustomerProfile(models.Model):
+class Customer(models.Model):
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
     phone = models.IntegerField()

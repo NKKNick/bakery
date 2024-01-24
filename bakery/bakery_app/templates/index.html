@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakery Index</title>
-</head>
-<body>
-    <h1>Bakery</h1>
-    <a href="{% url 'show_bakery' %}">
-        <p>Read</p>
-    </a>
-</body>
-</html>
+{% extends 'components/base.html'%}
+
+{% block title %}หน้าหลัก{% endblock %}
+  
+
+{% block main %}
+
+<h1 class="mb-auto text-5xl">หน้าหลัก</h1>
+<a href="{% url 'show_bakery' %}">
+    <p>Read</p>
+</a>
+
+  
+{% endblock %}

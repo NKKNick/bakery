@@ -1,0 +1,13 @@
+{% extends 'components/base.html'%}
+
+{% block title %}ข้อมูลผู้ใช้{% endblock %}
+{% block main %}
+
+
+<form action="{% url 'profile' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">ok</button>
+</form>
+
+{% endblock %}
