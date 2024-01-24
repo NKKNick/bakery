@@ -4,13 +4,14 @@ from user_app.forms import CustomerForm
 from bakery_app.models import Product
 from django.contrib.auth.decorators import login_required
 from user_app.models import Cart, CartDetail, Customer
+from bakery_app.forms import BakeryForm
 
 # Create your views here.
 def index(req):
-    return render(req , "bakery/index.html")
+    return render(req , "index.html")
 
-def test(req):
-    return render(req , "bakery/about.html")
+def about(req):
+    return render(req , "about.html")
 
 @login_required
 def profile(request):
@@ -39,7 +40,7 @@ def profile(request):
     else:
         form = CustomerForm()
 
-    return render(request, 'bakery/userprofile.html', {'form': form})
+    return render(request, 'userprofile.html', {'form': form})
 
 @login_required
 def cart(request):
@@ -60,7 +61,7 @@ def cart(request):
         cart = None
         cart_detail = None
 
-    return render(request, "bakery/cart.html", {'count': count, 'total': total, 'cart_detail': cart_detail})
+    return render(request, "cart.html", {'count': count, 'total': total, 'cart_detail': cart_detail})
 
 @login_required
 def add_cart(req, id):
@@ -94,3 +95,33 @@ def delete_cart(req,id):
     cartDetail=CartDetail.objects.get(product=product,cart=cart)
     cartDetail.delete()
     return redirect("/cart")
+
+def show_bakery(req):
+    bakeries = Product.objects.all()
+    return render(req, 'show_bakery.html', {'bakeries':bakeries})
+
+@login_required
+def create_bakery(req):
+    form = BakeryForm
+    if req.method == 'POST':
+        form = BakeryForm(req.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/')
+    return render(req, 'create_bakery.html', {'form':form})
+
+@login_required
+def update_bakery(req,id):
+    bakeries = Product.objects.get(pk=id)
+    form = BakeryForm(req.POST, instance=bakeries)
+    if form.is_valid():
+        form.instance.owner = req.user
+        form.save()
+        return redirect('/')
+    return render(req, 'update_bakery.html', {'fic':bakeries})
+
+@login_required
+def delete_bakery(req,id):
+    bakeries = Product.objects.get(pk=id)
+    bakeries.delete()
+    return redirect('/')

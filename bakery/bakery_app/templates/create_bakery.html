@@ -1,0 +1,22 @@
+{% extends 'components/base.html'%}
+
+{% block title %}เพิ่มขนม{% endblock %}
+{% block main %}
+
+<h2>Create Bakery</h2>
+<form method="post" action="/create_bakery/" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div>
+        <p>
+        Bakery Name
+        <input type="text" name="name" id="">   
+        Price
+        <input type="number" name="price" id="">
+        Amount
+        <input type="number" name="amount" id="">
+        <button type="submit">OK</button>
+    </div>
+</form>
+<a href="{% url 'show_bakery' %}">Show Bakeries</a>
+    
+{% endblock %}
