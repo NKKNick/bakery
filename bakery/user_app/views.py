@@ -7,6 +7,7 @@ from user_app.models import Cart, CartDetail
 
 # Create your views here.
 def index(req):
+<<<<<<< HEAD
     return HTTPResponse("asdawdawd")
 
 @login_required
@@ -73,3 +74,9 @@ def delete_cart(req,id):
     cartDetail=CartDetail.objects.get(product=product,cart=cart)
     cartDetail.delete()
     return redirect("/cart")
+=======
+    return render(req , "bakery/index.html")
+
+def test(req):
+    return render(req , "bakery/about.html")
+>>>>>>> c9674202030136d297220ae3be956e7871114653
