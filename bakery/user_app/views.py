@@ -18,10 +18,20 @@ def about(req):
 @login_required
 def kuy(req):
     if check_profile(req.user):
-        return redirect('update')
+        return redirect('user/update')
     else:
         return redirect('user/profile')
 
+@login_required
+def update_profile(req):
+    address = Customer.objects.get(user=req.user)
+    if req.method == "POST":
+        form = CustomerForm(req.POST, instance=address)
+        if form.is_valid():
+            form.instance.owner = req.user
+            form.save()
+            return redirect('/')
+    return render(req, 'update_customer.html', {'add':address})
 
 @login_required
 def profile(req):
