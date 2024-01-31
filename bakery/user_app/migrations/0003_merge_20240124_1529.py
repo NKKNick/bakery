@@ -5,7 +5,6 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("user_app", "0002_alter_cart_customer_alter_customer_phone"),
         ("user_app", "0002_alter_cart_customer_customerprofile_delete_customer"),
     ]
 

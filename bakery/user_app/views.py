@@ -1,10 +1,12 @@
 from http.client import HTTPResponse
 from django.shortcuts import redirect, render
+from custom.check_exist import check_profile
 from user_app.forms import CustomerForm
 from bakery_app.models import Product
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 from user_app.models import Cart, CartDetail, Customer
 from bakery_app.forms import BakeryForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(req):
@@ -14,21 +16,33 @@ def about(req):
     return render(req , "about.html")
 
 @login_required
-def profile(request):
-    if request.method == 'POST':
-        form = CustomerForm(request.POST)
+def kuy(req):
+    if check_profile(req.user):
+        return redirect('update')
+    else:
+        return redirect('user/profile')
+
+
+@login_required
+def profile(req):
+    if req.method == 'POST':
+        form = CustomerForm(req.POST)
         if form.is_valid():
-            if request.user.is_authenticated:
+            if req.user.is_authenticated:
                 # Check if a Customer record already exists for the user
-                existing_customer = Customer.objects.filter(user=request.user).first()
+                existing_customer = Customer.objects.filter(user=req.user).first()
 
                 if existing_customer:
-                    # Handle the case where a Customer record already exists
-                    return redirect('profile')  # Redirect to the user's profile or another view
+                    customer = Customer.objects.get(user=req.user)
+                    form = CustomerForm(req.POST, instance=customer)
+                    if form.is_valid():
+                        form.instance.owner = req.user
+                        form.save()
+                        return render(req,'updatecustomer.html',{'customer':customer})
                 else:
                     # Create a new Customer record
                     customer = form.save(commit=False)
-                    customer.user = request.user
+                    customer.user = req.user
                     customer.save()
                     # ... rest of your code
                     return redirect('/')  # Redirect to the home page or another view
@@ -40,7 +54,7 @@ def profile(request):
     else:
         form = CustomerForm()
 
-    return render(request, 'userprofile.html', {'form': form})
+    return render(req, 'userprofile.html', {'form': form})
 
 @login_required
 def cart(request):
@@ -100,14 +114,17 @@ def show_bakery(req):
     bakeries = Product.objects.all()
     return render(req, 'show_bakery.html', {'bakeries':bakeries})
 
+@permission_required('admin',login_url="/")
 @login_required
 def create_bakery(req):
-    form = BakeryForm
+    form = BakeryForm()
     if req.method == 'POST':
         form = BakeryForm(req.POST)
         if form.is_valid():
             form.save()
         return redirect('/')
+    else:
+        redirect("/")
     return render(req, 'create_bakery.html', {'form':form})
 
 @login_required

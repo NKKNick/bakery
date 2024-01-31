@@ -9,6 +9,8 @@ class Customer(models.Model):
     phone = models.IntegerField()
     address = models.CharField(max_length=50)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.firstname
 
 class Cart(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
