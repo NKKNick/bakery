@@ -8,3 +8,4 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.name} ราคา {self.price} บาท จำนวน {self.amount} ชิ้น'
+    

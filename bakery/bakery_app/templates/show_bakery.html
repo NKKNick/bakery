@@ -16,6 +16,7 @@
                 <p>{{ bakery }}</p>
             {% endfor %}
         </ul>
+        <a class="text-red" href="{%url 'cart_add' b.id %}">ใส่ตระกร้า</a>
         <a href="/update_bakery/{{b.id}}">UPDATE</a>
         <a href="/delete_bakery/{{b.id}}">DELETE</a>
     </div>
