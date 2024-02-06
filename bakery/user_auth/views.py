@@ -36,7 +36,7 @@ def register(req):
                     password=password,
                 )
                 user.save()
-                return redirect("/register")
+                return redirect("/login")
     return render(req,'register.html')
 def logout(req):
     auth.logout(req)

@@ -1,0 +1,18 @@
+{% extends 'components/base.html' %}
+
+{% block main %}
+<section>
+    <div class="flex justify-center">
+        <div class="flex flex-col">
+            <div class="text-center"></div>
+            <form action="{%url 'qr' %}" method="post" enctype="multipart/form-data" class="max-w-lg mx-auto">
+                {% csrf_token %}
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">อัพโหลดสลิป</label>
+                <input  type="file" id="image" name="image" accept="image/*" required >
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">ยืนยัน</button> 
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
