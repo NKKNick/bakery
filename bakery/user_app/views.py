@@ -68,9 +68,11 @@ def profile(req):
 
     return render(req, 'userprofile.html', {'form': form})
 
+
 def show_bakery(req):
     bakeries = Product.objects.all()
     return render(req, 'show_bakery.html', {'bakeries':bakeries})
+
 
 @permission_required('admin',login_url="/")
 @login_required
