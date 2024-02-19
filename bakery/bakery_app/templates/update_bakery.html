@@ -7,22 +7,30 @@
 
 {% block main %}
 
-
-<h2>Update Bakery</h2>
+<body style="background-color: rgb(248, 236, 221);"></body>
+<h2 class="text-2xl text-center">Update Bakery</h2>
 <form method="post" action="/update_bakery/{{bakeries.id}}/" enctype="multipart/form-data">
     {% csrf_token %}
-    <div>
-        <p>
-        Bakery Name
-        <input type="text" name="name" id="", value="{{bakeries.name}}">   
-        Price
-        <input type="number" name="price" id="", value="{{bakeries.price}}">
-        Amount
-        <input type="number" name="amount" id="", value="{{bakeries.amount}}">
-        <button type="submit">OK</button>
+    <div class="rounded-md text-center pt-5 pb-5 w-1/4 m-auto mb-20" style="background-color: rgb(243, 212, 171);">
+        Bakery Name :
+        <input type="text" name="name" id="", value="{{bakeries.name}}" class="border-2 border-black rounded-md"> 
+        <br>
+        <br>
+        Price :
+        <input type="number" name="price" id="", value="{{bakeries.price}}" class="ml-14 border-2 border-black rounded-md">
+        <br>
+        <br>
+        Amount :
+        <input type="number" name="amount" id="", value="{{bakeries.amount}}" class="ml-9 border-2 border-black rounded-md">
+        <br>
+        <br>
+        <div class="space-x-4">
+            <button type="submit" class="box rounded-full text-md py-1 px-8" style="background-color: blanchedalmond;">OK</button>
+            <a href="{% url 'show_bakery' %}" class="box rounded-full text-md px-6 py-1.5" style="background-color: blanchedalmond;">Cancel</a>
+        </div>
     </div>
 </form>
-<a href="{% url 'show_bakery' %}">Cancel</a>
+</body>
 
   
 {% endblock %}

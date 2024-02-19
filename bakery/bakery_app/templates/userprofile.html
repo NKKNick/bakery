@@ -3,11 +3,31 @@
 {% block title %}ข้อมูลผู้ใช้{% endblock %}
 {% block main %}
 
-
-<form action="{% url 'profile' %}" method="POST">
+<body style="background-color: burlywood;">
+    <form action="{% url 'profile' %}" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">ok</button>
+    <div class="rounded-md text-center pt-5 pb-5 w-1/4 m-auto" style="background-color: rgb(243, 212, 171);">
+        ชื่อ :
+        <input type="text" name="firstname" class="border-2 border-black rounded-md ml-9">
+        <br>
+        <br>
+        นามสกุล :
+        <input type="text" name="lastname" class="border-2 border-black rounded-md">
+        <br>
+        <br>
+        เบอร์โทร :
+        <input type="text" name="phone" class="border-2 border-black rounded-md">
+        <br>
+        <br>
+        ที่อยู่ :
+        <input type="text" name="address" class="border-2 border-black rounded-md ml-7">
+        <br>
+        <br>
+        <button type="submit" class="box rounded-full px-4 text-2xl pb-1 px-8" style="background-color: blanchedalmond;">OK</button>
+    </div>
 </form>
+</body>
+
 
 {% endblock %}
+

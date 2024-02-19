@@ -64,6 +64,7 @@ def dec_cart(req,id):
         cart_detail.save()
         return redirect('/cart')
 
+@login_required
 def inc_cart(req,id):
     product =Product.objects.get(pk=id)
     cart = Cart.objects.get(customer=req.user)

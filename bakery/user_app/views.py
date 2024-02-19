@@ -9,8 +9,10 @@ from bakery_app.forms import BakeryForm
 from django.contrib.auth.models import User
 
 # Create your views here.
+
 def index(req):
     return render(req , "index.html")
+
 
 def about(req):
     return render(req , "about.html")
@@ -57,9 +59,11 @@ def profile(req):
             form = CustomerForm()
         return render(req, 'userprofile.html', {'form': form})
 
+
 def show_bakery(req):
     bakeries = Product.objects.all()
     return render(req, 'show_bakery.html', {'bakeries':bakeries})
+
 
 @permission_required('admin',login_url="/")
 @login_required
@@ -82,7 +86,7 @@ def update_bakery(req,id):
         form.instance.owner = req.user
         form.save()
         return redirect('/')
-    return render(req, 'update_bakery.html', {'fic':bakeries})
+    return render(req, 'update_bakery.html', {'bakeries':bakeries})
 
 @login_required
 def delete_bakery(req,id):
