@@ -8,10 +8,9 @@ from user_app.models import Customer
 #ส่งสลิปใหม่
 
 ORDER_CHOICE = (
-    ("1","ยังไม่ชำระเงิน"),
-    ("2","รอตรวจสอบสลิป"),
-    ("3","ชำระเงินเสร็จสิ้น"),
-    ("4","ส่งสลิปใหม่"),
+    ("1","รอตรวจสอบสลิป"),
+    ("2","ชำระเงินเสร็จสิ้น"),
+    ("3","ส่งสลิปใหม่"),
 )
 # Create your models here.
 class Order(models.Model):
@@ -20,6 +19,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     address = models.TextField()
     status = models.CharField(max_length=255,choices=ORDER_CHOICE,default=1)
+    slip = models.ImageField(upload_to='slip',blank=True)
     created = models.DateTimeField(auto_now_add =True)
     update = models.DateTimeField(auto_now =True)
     def __str__(self):
@@ -32,13 +32,6 @@ class OrderDetail(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
 
-class Payment(models.Model):
-    order = models.OneToOneField(Order,on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add =True)
-    update = models.DateTimeField(auto_now =True)
-    slip = models.ImageField(upload_to='slip',blank=True)
-    def __str__(self) -> str:
-        return f'{self.order.customer}'
 
 
 
