@@ -9,5 +9,6 @@ class Product(models.Model):
     category = models.CharField(max_length=1000,blank=True)
     image = models.ImageField(upload_to="product",blank=True)
 
-    def str(self):
+    def __str__(self):
         return f'{self.name} {self.price} {self.amount} {self.descriptions} {self.category} {self.image}'
+    

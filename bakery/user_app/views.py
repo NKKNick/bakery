@@ -73,9 +73,9 @@ def create_bakery(req):
         form = BakeryForm(req.POST)
         if form.is_valid():
             form.save()
-        return redirect('/')
+        return redirect('dashboard')
     else:
-        redirect("/")
+        redirect("create_bakery")
     return render(req, 'create_bakery.html', {'form':form})
 
 @login_required
@@ -85,11 +85,11 @@ def update_bakery(req,id):
     if form.is_valid():
         form.instance.owner = req.user
         form.save()
-        return redirect('/')
+        return redirect('dashboard')
     return render(req, 'update_bakery.html', {'bakeries':bakeries})
 
 @login_required
 def delete_bakery(req,id):
     bakeries = Product.objects.get(pk=id)
     bakeries.delete()
-    return redirect('/')
+    return redirect('dashboard')
