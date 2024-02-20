@@ -33,12 +33,13 @@
                 </div>
               </div>
             </div>
+            {% endfor %}
           </div>
           <!-- Sub total -->
           <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3" style="background-color: blanchedalmond;">
             <div class="mb-2 flex justify-between">
               <p class="text-gray-700">ราคาแต่ละชิ้น</p>
-              <p class="text-gray-700">{{ i.product.price }} ฿</p>
+              <p class="text-gray-700">{{ cart_detail.0.product.price }} ฿</p>
             </div>
             <div class="flex justify-between">
               <p class="text-gray-700">ค่าจัดส่ง</p>
@@ -51,7 +52,6 @@
                 <p class="mb-1 text-lg font-bold">{{ total|intcomma }} ฿</p>
               </div>
             </div>
-            {% endfor %}
             <a href="{%url 'order' %}">
             <button class="mt-6 w-full rounded-md bg-[#ffd39a] py-1.5 font-bold text-gray-700 hover:bg-[#deb887]">ยืนยันการสั่งซื้อ</button>
           </a>

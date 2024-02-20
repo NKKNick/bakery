@@ -44,9 +44,9 @@ def add_cart(req, id):
         if cart_detail.amount < cart_detail.product.amount:
             cart_detail.amount += 1
             cart_detail.save()
-            return redirect('/show_bakery')
+            return redirect('show_bakery')
         else:
-            return redirect('/show_bakery')
+            return redirect('index')
 
     except CartDetail.DoesNotExist:
         cart_detail = CartDetail.objects.create(
