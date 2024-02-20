@@ -1,33 +1,27 @@
 {% extends 'components/base_admin.html'%}
 
 {% block title %}เกี่ยวกับเรา{% endblock %}
-  
-
 
 {% block main %}
 
-<body style="background-color: #c3e7ff">
-    <div class="flex justify-center items-center h-full">
-        <div class="rounded-md m-auto p-10 shadow" style="background-color: #bed5ff">
-        <br>
-        <br>
-            {% for b in bakeries %}
-            <div>
-                <img src="{{b.image.url}}" alt="product" style="height: 6cm; width: 8cm; margin: auto;" class="shadow-md rounded-lg">
-                <br>
-                <div class="text-bold text-xl">
-                    <p> {{ b.name }} </p>
-                    <p>ราคาชิ้นละ {{ b.price }} บาท</p>
-                    <p>สั่งได้สูงสุด {{ b.amount }} ชิ้น</p>
-                </div>
-                <br>
-                <div class="justidy-between space-x-4">
-                    <a href="{% url 'update_bakery' b.id %}" class="rounded-full p-1" style="background-color: rgb(234, 243, 114);">แก้ไขขนม</a>
-                    <a href="{% url 'delete_bakery' b.id %}" class="rounded-full p-1" style="background-color: rgb(248, 118, 118);">ลบขนม</a>
-                </div>
-            {% endfor %}
+<div style="background-color: #bed5ff; display: flex; flex-wrap: wrap; justify-content: center;">
+    {% for b in bakeries %}
+    <div style="width: 45%; margin: 10px; background-color: #cfe0ff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <div class="text-center">
+            <img src="{{ b.image.url }}" alt="product" style="height: 6cm; width: 8cm; margin: auto;" class="shadow-md rounded-lg">
+            <div class="text-bold text-xl">
+                <p> {{ b.name }} </p>
+                <p>ราคาชิ้นละ {{ b.price }} บาท</p>
+                <p>สั่งได้สูงสุด {{ b.amount }} ชิ้น</p>
             </div>
-        </div> 
+            <br>
+            <div class="justidy-between space-x-4">
+                <a href="{% url 'update_bakery' b.id %}" class="rounded-full p-1" style="background-color: rgb(234, 243, 114);">แก้ไขขนม</a>
+                <a href="{% url 'delete_bakery' b.id %}" class="rounded-full p-1" style="background-color: rgb(248, 118, 118);">ลบขนม</a>
+            </div>
+        </div>
     </div>
-</body>
+    {% endfor %}
+</div>
+
 {% endblock %}
