@@ -54,7 +54,7 @@ def add_cart(req, id):
             cart=cart,
             amount=1,
         )
-        return redirect('/')
+        return redirect('/show_bakery')
 
 @login_required(login_url='/login')
 def dec_cart(req,id):
