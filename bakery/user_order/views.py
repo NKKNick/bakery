@@ -7,7 +7,7 @@ from user_order.models import Order, OrderDetail
 
 # Create your views here.
 @login_required(login_url='/login')
-def create_order(req):
+def confirm_order(req):
     if check_profile(req.user):
         custome= Customer.objects.get(user=req.user)
         cart = Cart.objects.get(customer=req.user)
@@ -17,6 +17,7 @@ def create_order(req):
         for i in cdetail:
             total += i.product.price * i.amount
             total_amount += i.amount
+        
         return render(req,'order.html',{'customer':custome,'total':total,'cart':cdetail,'total_amount':total_amount})
     else:
         return redirect('/user/profile')

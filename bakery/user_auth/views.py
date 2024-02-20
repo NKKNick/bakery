@@ -11,6 +11,8 @@ def login(req):
             user = auth.authenticate(username=username,password=password)
             if user is not None:
                 auth.login(req,user)
+                if req.user.is_superuser:
+                    return redirect('/dashboard')
                 return redirect('/')
             else:
                 return redirect('/login')
@@ -28,7 +30,7 @@ def register(req):
             return redirect("/register")
         else:
             if User.objects.filter(username=username).exists():
-                return redirect("/register")
+                return redirect("/login")
             else:
                 user=User.objects.create_user(
                     username=username,
