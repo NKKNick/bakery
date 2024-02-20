@@ -5,8 +5,8 @@
     <div class='flex flex-wrap items-center justify-between gap-5 relative'>
         <!--Logo-->
       <div class="flex justify-between items-center">
-        <a href="javascript:void(0)"><img src="{% static 'bakery_app/img/sovietbakery.png' %}" class='w-[5pc]'>
-        <a class="ml-[10px] font-bold text-yellow-100">Soviet Bakery</a>
+        <a href="javascript:void(0)"><img src="{% static 'bakery_app/img/circle-bakery-logo.png' %}" class='w-[5pc]'>
+        <a class="ml-[10px] font-bold text-yellow-100 text-2xl">Kru Waw Bakery</a>
       </a>
     </div>
       {% if user.is_authenticated %}
@@ -62,22 +62,12 @@
           <a href="{% url 'index' %}"
             class='lg:hover:text-[#eee1ba] text-[#deaf85] max-lg:text-white block font-bold text-[17px] '>หน้าหลัก</a>
         </li>
+        <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href="{% url 'show_bakery'%}"
+          class='lg:hover:text-[#eee1ba] text-[#deaf85] block font-bold text-[17px]'>รายการขนมทั้งหมด</a>
+        </li>
         <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href="{% url 'about' %}"
             class='lg:hover:text-[#eee1ba] text-[#deaf85] block font-bold text-[17px]'>เกี่ยวกับเรา</a>
         </li>
-        <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href='javascript:void(0)'
-            class='lg:hover:text-[#eee1ba] text-[#deaf85] block font-bold text-[17px]'>Feature</a>
-        </li>
-        <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href='javascript:void(0)'
-            class='lg:hover:text-[#eee1ba] text-[#deaf85] block font-bold text-[17px]'>Blog</a>
-        </li>
-        <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href='javascript:void(0)'
-            class='lg:hover:text-[#eee1ba] text-[#deaf85] block font-bold text-[17px]'>About</a>
-        </li>
-        <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href='javascript:void(0)'
-            class='lg:hover:text-[#eee1ba] text-[#deaf85] block font-bold text-[17px]'>Contact</a>
-        </li>
-        
       </ul>
     </div>
   </header>
