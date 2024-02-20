@@ -5,7 +5,7 @@
     <div class="flex justify-center ">
         <div class="mb-10">
             <h2 class="flex justify-center text-xl mt-10 mb-5">ทำการสั่งซื้อ</h2>
-            <div class="shadow-md rounded px-20 pt-4 pb-8 mb-4" style="background-color: whitesmoke" > 
+            <div class="shadow-md rounded px-20 pt-4 pb-8 mb-4" style="background-color: blanchedalmond" > 
             <div class="px-5 py-2">
                 <p>ข้อมูลในการติดต่อ</p>
                 <p>ชื่อ : {{customer.firstname}} {{customer.lastname}}</p>
@@ -15,11 +15,11 @@
             </div>
             <div class="flex justify-center mt-5">
               <a href="{%url 'profile' %}" 
-              class="focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1 dark:focus:ring-yellow-900">
+              class="focus:outline-none text-gray-700 bg-[#ffd39a] hover:bg-[#deb887] focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1 dark:focus:ring-yellow-900">
               แก้ไขข้อมูล</a>
             </div>
         </div>
-        <div class="shadow-md rounded px-20 pt-2 pb-8 mb-4" style="background-color: whitesmoke" >
+        <div class="shadow-md rounded px-20 pt-2 pb-8 mb-4" style="background-color: #ffebcd" >
           <div class="py-2">
           <p class="py-2">รายละเอียดคำสั่งซื้อ</p>
           <div class="relative overflow-x-auto">
@@ -68,14 +68,14 @@
                     <tr class="font-semibold text-gray-900 dark:text-white">
                       <td></td>
                       <td></td>
-                      <th scope="row" class="px-6 py-3 text-base text-center">Total</th>
+                      <th scope="row" class="px-6 py-3 text-base text-center">ทั้งหมด</th>
                       <td class="px-6 py-3 text-center" >{{total_amount}}</td>
                       <td class="px-6 py-3 text-center">{{total}}</td>
                     </tr>
                 </tfoot>
               </table>
               <div class="flex justify-center mt-5">
-                <a href="{%url 'qr' %}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                <a href="{%url 'qr' %}" class="text-gray-700 bg-[#ffd39a] hover:bg-[#deb887] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                   ชำระเงิน
                 </a>
               </div>
