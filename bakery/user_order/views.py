@@ -52,5 +52,4 @@ def upload_slip(req):
         return redirect('/')
 
     else:
-
         return render(req,'showqr.html')
