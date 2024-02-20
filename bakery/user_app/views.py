@@ -64,32 +64,3 @@ def show_bakery(req):
     bakeries = Product.objects.all()
     return render(req, 'show_bakery.html', {'bakeries':bakeries})
 
-
-@permission_required('admin',login_url="/")
-@login_required
-def create_bakery(req):
-    form = BakeryForm()
-    if req.method == 'POST':
-        form = BakeryForm(req.POST)
-        if form.is_valid():
-            form.save()
-        return redirect('dashboard')
-    else:
-        redirect("create_bakery")
-    return render(req, 'create_bakery.html', {'form':form})
-
-@login_required
-def update_bakery(req,id):
-    bakeries = Product.objects.get(pk=id)
-    form = BakeryForm(req.POST, instance=bakeries)
-    if form.is_valid():
-        form.instance.owner = req.user
-        form.save()
-        return redirect('dashboard')
-    return render(req, 'update_bakery.html', {'bakeries':bakeries})
-
-@login_required
-def delete_bakery(req,id):
-    bakeries = Product.objects.get(pk=id)
-    bakeries.delete()
-    return redirect('dashboard')

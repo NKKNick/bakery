@@ -6,7 +6,7 @@
 <body style="background-color: #c3e7ff;">
     <div class="py-8 px-8 mx-auto max-w-2xl lg:py-16 rounded-md shadow" style="background-color: #bed5ff">
         <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white text-center">สร้างสินค้า</h2>
-        <form action="{%url 'create_bakery' %}" method="POST">
+        <form action="{%url 'create_bakery' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="w-full">
                     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">หมวดหมู่</label>
-                    <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected="">เลือกประเภทเบเกอรี่</option>
                         <option value="ขนมปัง">ขนมปัง</option>
                         <option value="ขนม">ขนม</option>
@@ -29,8 +29,13 @@
                     </select>
                 </div>
                 <div class="sm:col-span-2">
-                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รายละเอียดสินค้า</label>
-                    <textarea id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ใส่รายละเอียดสินค้าที่นี่"></textarea>
+                    <label for="descriptions" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รายละเอียดสินค้า</label>
+                    <textarea id="descriptions" name="descriptions" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="ใส่รายละเอียดสินค้าที่นี่"></textarea>
+                </div>
+                <div>
+                    <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ราคา</label>
+                    <input type="number" name="amount" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="0฿" required="">
+                    <input type="file" name="image">
                 </div>
             </div>
             <button type="submit" class="flex m-auto px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-gray-900 bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 bg-white hover:bg-gray-400">
