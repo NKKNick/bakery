@@ -8,3 +8,4 @@ from bakery_app.models import Product
 def testHello(req):
     bakeries = Product.objects.all()
     return render(req,'dashboard.html', {'bakeries':bakeries})
+
