@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "bakery_app",
     "user_auth",
     "user_order",
+    "admin_app",
 ]
 
 MIDDLEWARE = [

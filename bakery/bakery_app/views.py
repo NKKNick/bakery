@@ -34,7 +34,7 @@ def add_cart(req, id):
     except Cart.DoesNotExist:
         # ถ้าไม่มีสร้างใหม่
         cart = Cart.objects.create(customer=req.user)
-
+        
     try:
         cart_detail = CartDetail.objects.get(product=product, cart=cart)
         if cart_detail.amount < cart_detail.product.amount:
