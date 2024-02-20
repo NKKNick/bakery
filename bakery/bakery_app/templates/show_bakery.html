@@ -14,7 +14,7 @@
         <div class="text-bold text-xl">
             <p> {{ b.name }} </p>
             <p>ราคาชิ้นละ {{ b.price }} บาท</p>
-            <p>จำนวนสูงสุด {{ b.amount }} ชิ้น</p>
+            <p>สั่งได้สูงสุด {{ b.amount }} ชิ้น</p>
         </div>
         <br>
         <a class="text-red rounded-full underline hover:text-gray-500" href="{%url 'cart_add' b.id %}">ใส่ตระกร้า</a>

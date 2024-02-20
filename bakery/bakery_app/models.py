@@ -8,5 +8,5 @@ class Product(models.Model):
     image = models.ImageField(upload_to="product",blank=True)
 
     def __str__(self):
-        return f'{self.name} ราคา {self.price} บาท สั่งได้สูงสุด {self.amount} ชิ้น'
+        return f'{self.name} {self.price} {self.amount} {self.image}'
     
