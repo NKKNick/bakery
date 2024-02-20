@@ -2,13 +2,18 @@
 
 {% block title %}เกี่ยวกับเรา{% endblock %}
   
-
+{% load static %}
 
 
 {% block main %}
 
 <body style="background-color: burlywood;">
-    <h1 class="mb-auto text-6xl text-center mt-28 text-5xl">phone 084-605-xxxx </h1>
+    <img src="{% static 'bakery_app/img/bakery_logo.png' %}" class="w-[30pc] m-auto">
+    <div class="rounded bg-amber-700 w-1/4 py-4" style="margin: auto;">
+        <p class="mb-auto text-center text-2xl text-yellow-400 font-semibold">อีเมล : aomwaw@hotmail.com </p>
+        <p class="mb-auto text-center text-2xl text-yellow-400 font-semibold">facebook : Kru Waw </p>
+        <p class="mb-auto text-center text-2xl text-yellow-400 font-semibold">เบอโทร : 084-605-6907 </p>
+    </div>
 </body>
 
 
