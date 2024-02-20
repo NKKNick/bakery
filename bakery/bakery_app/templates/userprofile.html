@@ -6,7 +6,8 @@
 <body style="background-color: burlywood;">
     <form action="{% url 'profile' %}" method="POST">
     {% csrf_token %}
-    <div class="rounded-md text-center pt-5 pb-5 w-1/4 m-auto" style="background-color: rgb(243, 212, 171);">
+    <div class="rounded-full text-center pt-5 pb-5 w-1/4 m-auto" style="background-color: rgb(243, 212, 171);">
+        <p class="text-2xl text-center my-10">เพิ่มที่อยู่</p>
         ชื่อ :
         <input type="text" name="firstname" class="border-2 border-black rounded-md ml-9">
         <br>
@@ -23,7 +24,7 @@
         <input type="text" name="address" class="border-2 border-black rounded-md ml-7">
         <br>
         <br>
-        <button type="submit" class="box rounded-full px-4 text-2xl pb-1 px-8" style="background-color: blanchedalmond;">OK</button>
+        <button type="submit" class="box rounded-full px-4 text-2xl pb-1 px-8 focus:ring-2 focus:outline-none focus:ring-[#deb887]" style="background-color: #ffebcd;">OK</button>
     </div>
 </form>
 </body>

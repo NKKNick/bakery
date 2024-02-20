@@ -1,17 +1,15 @@
-{% extends 'components/base.html'%}
+{% extends 'components/base_admin.html'%}
 
 {% block title %}แก้ไขขนม{% endblock %}
   
 
-
-
 {% block main %}
 
-<body style="background-color: rgb(248, 236, 221);"></body>
-<h2 class="text-2xl text-center">Update Bakery</h2>
+<body style="background-color: #c3e7ff;"></body>
+<h2 class="text-2xl text-center">แก้ไขขนม</h2>
 <form method="post" action="/update_bakery/{{bakeries.id}}/" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="rounded-md text-center pt-5 pb-5 w-1/4 m-auto mb-20" style="background-color: rgb(243, 212, 171);">
+    <div class="rounded-md text-center py-5 w-1/4 m-auto mb-20 shadow" style="background-color: #bed5ff;">
         Bakery Name :
         <input type="text" name="name" id="", value="{{bakeries.name}}" class="border-2 border-black rounded-md"> 
         <br>
@@ -25,8 +23,8 @@
         <br>
         <br>
         <div class="space-x-4">
-            <button type="submit" class="box rounded-full text-md py-1 px-8" style="background-color: blanchedalmond;">OK</button>
-            <a href="{% url 'show_bakery' %}" class="box rounded-full text-md px-6 py-1.5" style="background-color: blanchedalmond;">Cancel</a>
+            <button type="submit" class="box rounded-full text-md py-1 px-8 shadow bg-white hover:bg-gray-400">ยืนยัน</button>
+            <a href="{% url 'dashboard' %}" class="box rounded-full text-md px-6 py-1.5 shadow bg-white hover:bg-gray-400">ยกเลิก</a>
         </div>
     </div>
 </form>

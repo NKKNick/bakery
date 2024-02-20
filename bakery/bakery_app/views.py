@@ -4,10 +4,11 @@ from bakery_app.models import Product
 from user_app.models import Cart, CartDetail
 # Create your views here.
 
-@login_required
+@login_required(login_url='/login')
 def cart(request):
     count = 0
     total = 0
+    shipping_cost = 0 
     try:
         cart = Cart.objects.get(customer=request.user)
     except Cart.DoesNotExist:
@@ -19,13 +20,16 @@ def cart(request):
             count += detail.amount  
             total += detail.product.price * detail.amount
             
+        shipping_cost = total // 10
+            
     except CartDetail.DoesNotExist:
         cart = None
         cart_detail = None
 
-    return render(request, "cart.html", {'count': count, 'total': total, 'cart_detail': cart_detail})
+    return render(request, "cart.html", {'count': count, 'total': total, 'cart_detail': cart_detail, 'shipping_cost': shipping_cost})
 
-@login_required
+
+@login_required(login_url='/login')
 def add_cart(req, id):
     product = Product.objects.get(pk=id)
     try:
@@ -52,7 +56,7 @@ def add_cart(req, id):
         )
         return redirect('/')
 
-@login_required
+@login_required(login_url='/login')
 def dec_cart(req,id):
     product =Product.objects.get(pk=id)
     cart = Cart.objects.get(customer=req.user)
@@ -64,7 +68,7 @@ def dec_cart(req,id):
         cart_detail.save()
         return redirect('/cart')
 
-@login_required
+@login_required(login_url='/login')
 def inc_cart(req,id):
     product =Product.objects.get(pk=id)
     cart = Cart.objects.get(customer=req.user)
@@ -77,7 +81,7 @@ def inc_cart(req,id):
         return redirect('/cart')
 
 
-@login_required
+@login_required(login_url='/login')
 def delete_cart(req,id):
     product = Product.objects.get(pk=id)
     cart = Cart.objects.get(customer=req.user)
