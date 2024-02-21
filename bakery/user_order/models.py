@@ -16,7 +16,6 @@ ORDER_CHOICE = (
 class Order(models.Model):
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
     total = models.IntegerField()
-    created = models.DateTimeField(auto_now_add=True)
     address = models.TextField()
     status = models.CharField(max_length=255,choices=ORDER_CHOICE,default=1)
     slip = models.ImageField(upload_to='slip',blank=True)
@@ -31,6 +30,8 @@ class OrderDetail(models.Model):
     amount = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
+    def subprice(self):
+        return self.amount * self.price
 
 
 

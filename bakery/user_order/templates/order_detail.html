@@ -1,5 +1,5 @@
 {% extends 'components/base.html' %}
-
+{% load humanize %}
 {% block main %}
 <section>
     <div class="h-[100vh]" >
@@ -13,40 +13,50 @@
                                 รหัสคำสั่งซื้อ
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                เวลาที่สั่งซื้อ
+                                ชื่อสินค้า
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                สถานะ
+                                ราคาต่อหน่วย
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                จำนวนสินค้า
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 ราคารวม
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for i in order %}
+                        {% for i in detail %}
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{i.id}}
                             </th>
                             <td class="px-6 py-4">
-                                {{i.created |date:'d/m/Y'}}
+                                {{i.product}}
                             </td>
                             <td class="px-6 py-4">
-                                {{i.get_status_display}}
+                                {{i.price| intcomma}}
                             </td>
                             <td class="px-6 py-4">
-                                {{i.total}}
+                                {{i.amount}}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{%url 'order_detail' i.id %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">รายละเอียด</a>
+                                {{i.subprice | intcomma}}
                             </td>
+
                         </tr>
                         {% endfor %}
                     </tbody>
+                    <tfoot>
+                        <tr class="font-semibold text-gray-900 dark:text-white">
+                            <td></td>
+                            <td></td>
+                            <th scope="row" class="px-6 py-3 text-base bg-white border-b dark:bg-gray-800 dark:border-gray-700">สรุป</th>
+                            <td class="px-6 py-3 bg-white border-b dark:bg-gray-800 dark:border-gray-700">{{ total_amount }}</td>
+                            <td class="px-6 py-3 bg-white border-b dark:bg-gray-800 dark:border-gray-700">{{ total_price |intcomma}} ฿</td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

@@ -1,0 +1,40 @@
+{% extends 'components/base_admin.html'%}
+{% load humanize %}
+{% block title %}คำสั่งซื้อ{% endblock %}
+
+{% block main %}
+<body style="background-color: #c3e7ff;">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold text-center mb-10">Order Detail</h1>
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold">รหัสคำสั่งซื้อ: {{order.id}}</h2>
+                <span class="text-gray-600">สถานะ: {{order.get_status_display}}</span>
+            </div>
+            <hr class="my-4">
+            {% for i in detail %}
+            <div class="flex items-center mb-4">
+                <div>
+                    <h3 class="font-bold">{{i.product}}</h3>
+                    <p class="text-sm text-gray-600">ราคา: {{i.price}}</p>
+                    <p class="text-sm text-gray-600">จำนวน: {{i.amount}}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Repeat above block for each item in the order -->
+            <div class="flex items-center justify-between mt-8">
+                <h3 class="text-lg font-bold">ที่อยู่ในการจัดส่ง</h3>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">{{order.address}}</p>
+            <div class="flex justify-between items-center mt-8">
+                <h3 class="text-lg font-bold">Total Amount</h3>
+                <p>{{order.total |intcomma}} ฿</p>
+            </div>
+            <div class="flex flex-col justify-center">
+                <h3 class="text-lg font-bold mt-8 text-center">สลิป</h3>
+                <img src="{{order.slip.url}}" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

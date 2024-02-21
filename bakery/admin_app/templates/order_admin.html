@@ -1,0 +1,40 @@
+{% extends 'components/base_admin.html'%}
+{% load humanize %}
+{% block title %}คำสั่งซื้อ{% endblock %}
+
+{% block main %}
+<body style="background-color: #c3e7ff;">
+    <div class="container mx-auto my-4">
+        <h1 class="text-3xl font-bold text-center mb-10">คำสั่งซื้อ</h1>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Example order -->
+            {% for i in order %}
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">รหัสคำสั่งซื้อ: {{i.id}}</h2>
+                <p><span class="font-semibold">ผู้ใช้:</span> {{i.customer.firstname}} {{i.customer.lastname}}</p>
+                <p><span class="font-semibold">ราคารวม:</span> {{i.total |intcomma}} ฿</p>
+                <form action="{%url 'status_update' i.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="flex gap-3 items-center mt-3">
+                        <span class="font-semibold">สถานะ:</span> 
+                        <select name="status" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>{{i.get_status_display}}</option>
+                            <option value="1">รอตรวจสอบสลิป</option>
+                            <option value="2">ชำระเงินเสร็จสิ้น</option>
+                            <option value="3">ส่งสลิปใหม่</option>
+                        </select>
+                    </div>
+                    <button type="submit"> 
+                        <button class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-yellow-600">อัพเดทสถานะ</button>
+                    </button>
+                </form>
+                <a href="{%url 'orderdetail_admin' i.id %}"> 
+                    <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-600">รายละเอียด</button>
+                </a>
+            </div>
+            <!-- Repeat above block for each order -->
+            {% endfor %}
+        </div>
+    </div>
+</body>
+{% endblock %}

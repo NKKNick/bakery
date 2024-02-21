@@ -5,14 +5,14 @@
 
 {% block main %}
 
-<div style="background-color: burlywood; display: flex; flex-wrap: wrap; justify-content: center;">
+<div class="py-5 px-5 flex flex-auto justify-between" style="background-color: burlywood; display: flex; flex-wrap: wrap;">
     {% for b in bakeries %}
-    <div style="background-color: blanchedalmond; width:35%; margin: 10px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <div class="text-center">
-            <img src="{{ b.image.url }}" alt="product" style="height: 5cm; width: 5cm; margin: auto;" class="shadow-md">
+    <div class="py-5" style="background-color: blanchedalmond; width:30%; margin: 10px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <div class="flex flex-col items-center">
+            <img src="{{ b.image.url }}" alt="product" style="height: 5cm; width: 5cm;" class="shadow-md">
             <br>
-            <div class="text-bold text-xl">
-                <p> {{ b.name }} </p>
+            <div class="text-bold text-xl mr-8">
+                <p>{{ b.name }} </p>
                 <p>ราคาชิ้นละ {{ b.price }} บาท</p>
                 <p>สั่งได้สูงสุด {{ b.amount }} ชิ้น</p>
             </div>

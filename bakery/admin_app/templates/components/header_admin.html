@@ -6,7 +6,6 @@
         <!--Logo-->
       <div class="flex justify-between items-center">
         <a class="ml-[10px] font-bold text-[#001d64]">ผู้ดูแลระบบ</a>
-      </a>
     </div>
       <div class='flex lg:order-1 max-sm:ml-auto'>
       <svg class="h-12 w-12 text-[#001d64]"  fill="none" viewBox="0 0 24 24" stroke="currentColor" id="avatarButton" type="button" data-dropdown-toggle="dropdownHover" data-dropdown-placement="bottom-start" data-dropdown-trigger="hover" class="w-10 h-10 rounded-full cursor-pointer" alt="User dropdown">
@@ -40,6 +39,10 @@
         <li class='max-lg:border-b max-lg:bg-[#007bff] max-lg:py-2 px-3 max-lg:rounded'>
           <a href="{% url 'create_bakery' %}"
             class='lg:hover:text-[#001d64] hover:underline text-[#001d64] max-lg:text-white block font-bold text-[17px] '>เพิ่มขนม</a>
+        </li>
+        <li class='max-lg:border-b max-lg:bg-[#007bff] max-lg:py-2 px-3 max-lg:rounded'>
+          <a href="{% url 'order_admin' %}"
+            class='lg:hover:text-[#001d64] hover:underline text-[#001d64] max-lg:text-white block font-bold text-[17px] '>คำสั่งซื้อ</a>
         </li>
     </div>
   </header>

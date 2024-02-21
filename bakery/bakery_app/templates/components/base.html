@@ -6,7 +6,32 @@
     <title>{% block title %}{% endblock %}</title>
     <!--Tailwind css-->
     <script src="https://cdn.tailwindcss.com"></script>
-  
+    <style>
+      /* Add this CSS to your existing styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  min-height: calc(100vh - 100px); /* Adjust 100px according to your footer height */
+  /* Your existing styles for content */
+}
+
+footer {
+  width: 100%;
+  height: 50px; /* Adjust according to your footer height */
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  line-height: 100px;
+}
+
+    </style>
 
 
 </head>

@@ -57,3 +57,14 @@ def upload_slip(req):
 def order_history(req):
     order = Order.objects.filter(customer=req.user.id)
     return render(req,"order_history.html",{"order":order})
+
+def order_detail(req,id):
+    order = Order.objects.get(pk=id)
+    detail = OrderDetail.objects.filter(order=order)
+    total_price = 0
+    total_amount = 0
+    for i in detail:
+        total_price += i.price
+        total_amount += i.amount
+    print(total_amount)
+    return render(req,"order_detail.html",{"detail":detail,"total_amount":total_amount,"total_price":total_price})
