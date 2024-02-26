@@ -20,7 +20,7 @@ def confirm_order(req):
         
         return render(req,'order.html',{'customer':custome,'total':total,'cart':cdetail,'total_amount':total_amount})
     else:
-        return redirect('/user/profile')
+        return redirect('/ผู้ใช้/โปรไฟล์')
 
 def upload_slip(req):
     if req.method == "POST":

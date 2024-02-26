@@ -3,8 +3,8 @@ from user_order import views
 
 
 urlpatterns = [
-    path("order",views.confirm_order,name="order"),
-    path("order/qr",views.upload_slip,name="qr"),
-    path("order/history",views.order_history,name="order_history"),
-    path("order/detail/<int:id>",views.order_detail,name="order_detail"),
+    path("รายการ",views.confirm_order,name="order"),
+    path("รายการ/คิวอาร์",views.upload_slip,name="qr"),
+    path("รายการ/ประวัติ",views.order_history,name="order_history"),
+    path("รายการ/รายละเอียด/<int:id>",views.order_detail,name="order_detail"),
 ]

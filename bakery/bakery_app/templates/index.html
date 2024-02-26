@@ -4,79 +4,25 @@
 {% load static %} 
 
 {% block main %}
-<body style="background-color: burlywood;">
-    <div class="flex justify-center mt-[10px] mb-[1rem]">
-    <div id="default-carousel" class="relative w-4/6" data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96 flex justify-items-end ">
-         <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'bakery_app/slide_img/1.png' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'bakery_app/slide_img/2.jpg' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'bakery_app/slide_img/3.jpg' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'bakery_app/slide_img/4.jpg' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="{% static 'bakery_app/slide_img/6.png' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-    </div>
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-    </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
-</div>
+<div>
 
+</div>
 
 
 <section class="flex justify-center py-10">
-    <div class="container mx-auto px-4  justify-center">
+    <div class="container mx-auto px-4 justify-center">
         <h2 class="text-center text-3xl font-bold text-gray-800 mb-6">สินค้ายอดนิยม</h2>
-
-        
-        <div class="grid mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center">
-            <!-- Product Card Example -->
+        <div class="flex flex-wrap justify-center gap-8">
             {% for b in bakeries %}
                 {% if b.id == 1 or b.id == 2 or b.id == 3 or b.id == 6 %}
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden" style="flex: 1; max-width: 400px;">
                         <img src="{{ b.image.url }}" alt="Product" class="w-full h-64 object-cover">
                         <div class="p-4">
                             <h3 class="text-xl font-semibold text-gray-800">{{ b.name }}</h3>
                             <p class="font text-[#c37960]">{{ b.descriptions }}</p>
                             <p class="mt-2 text-gray-600">ราคาชิ้นละ {{ b.price }} บาท</p>
-                            <div class="mt-4 flex justify-between items-center">
-                                <button class="rounded py-1 px-3 bg-[#f0d7a7]">ใส่ตะกร้า</button>
+                            <div class="mt-4 justify-between m-2">
+                                <button class="rounded py-1 px-3 bg-[#f0d7a7] mx-4">ใส่ตะกร้า</button>
                                 <a href="{% url 'show_bakery' %}" class="px-3 py-1 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600">เลือกสินค้าที่นี่</a>
                             </div>
                         </div>
@@ -84,18 +30,24 @@
                 {% endif %}
             {% endfor %}
         </div>
-
-
     </div>
 </section>
+
+
+
 
     
 
 <section class="container mx-auto mt-4 ">
-    <h2 class="text-2xl font-bold mb-2">About Us</h2>
+    <h2 class="text-2xl font-bold mb-2">About Bakery</h2>
     <img src="https://c4.wallpaperflare.com/wallpaper/115/978/334/cake-pieces-nuts-white-background-wallpaper-preview.jpg" alt="Product" class="h-56 w-[20rem] float-left mr-4">
-    <p class="mb-4  max-w-[calc(100%-30rem)]  px-5 py-1">Choco brownies เป็นขนมหวานที่มีลักษณะเป็นชิ้นสี่เหลี่ยมหรือสี่เหลี่ยมจัตุรัส โดยส่วนผสมหลักคือช็อคโกแลตและเนย มักมีเนื้อนุ่มด้านในและเป็นเนื้อกรอบด้านนอก รสชาติหวานหอมของช็อคโกแลตเป็นจุดเด่นของ brownies ซึ่งบางครั้งยังมีเมล็ดช็อคโกแลตหรือถั่วคั่วเพิ่มเติมเพื่อเพิ่มความกรอบและรสชาติอื่นๆ เข้าไปใน brownies นอกจากนี้ การปรุง brownies ยังสามารถปรับแต่งรสชาติตามความชอบได้โดยการเพิ่มเนื้อวาฟเฟิล, ถั่ว, หรือผลไม้ต่างๆ และยังมีการเสริมโปรตีนด้วยวัตถุดิบเช่น เนยถั่ว, นมถั่วเหลือง เพื่อเพิ่มคุณค่าทางโภชนาการให้กับ brownies ดังนั้น brownies เป็นขนมที่ทำง่ายและสามารถปรับปรุงรสชาติได้ตามความชอบของแต่ละคน โดยนิยมรับประทานพร้อมกับกาแฟหรือนมสดครับ</p>
-
+    <p class="mb-4  max-w-[calc(100%-30rem)]  px-5 py-1">Choco brownies เป็นขนมหวานที่มีลักษณะเป็นชิ้นสี่เหลี่ยมหรือสี่เหลี่ยมจัตุรัส 
+        โดยส่วนผสมหลักคือช็อคโกแลตและเนย มักมีเนื้อนุ่มด้านในและเป็นเนื้อกรอบด้านนอก รสชาติหวานหอมของช็อคโกแลตเป็นจุดเด่นของ brownies 
+        ซึ่งบางครั้งยังมีเมล็ดช็อคโกแลตหรือถั่วคั่วเพิ่มเติมเพื่อเพิ่มความกรอบและรสชาติอื่นๆ เข้าไปใน brownies นอกจากนี้ การปรุง brownies 
+        ยังสามารถปรับแต่งรสชาติตามความชอบได้โดยการเพิ่มเนื้อวาฟเฟิล, ถั่ว, หรือผลไม้ต่างๆ และยังมีการเสริมโปรตีนด้วยวัตถุดิบเช่น เนยถั่ว, นมถั่วเหลือง 
+        เพื่อเพิ่มคุณค่าทางโภชนาการให้กับ brownies ดังนั้น brownies เป็นขนมที่ทำง่ายและสามารถปรับปรุงรสชาติได้ตามความชอบของแต่ละคน 
+        โดยนิยมรับประทานพร้อมกับกาแฟหรือนมสดครับ
+    </p>
 </section>
 
 

@@ -4,7 +4,7 @@ from user_app import views
 
 urlpatterns = [
     path("",views.index,name="index"),
-    path("about/",views.about,name="about"),
-    path("show_bakery/",views.show_bakery,name="show_bakery"),
-    path("user/profile",views.profile,name="profile"),
+    path("เกี่ยวกับเรา/",views.about,name="about"),
+    path("ขนมทั้งหมด/",views.show_bakery,name="show_bakery"),
+    path("ผู้ใช้/โปรไฟล์",views.profile,name="profile"),
 ]

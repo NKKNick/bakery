@@ -44,7 +44,7 @@ def add_cart(req, id):
         if cart_detail.amount < cart_detail.product.amount:
             cart_detail.amount += 1
             cart_detail.save()
-            return redirect('show_bakery')
+            return redirect('ขนมทั้งหมด')
         else:
             return redirect('index')
 
@@ -54,7 +54,7 @@ def add_cart(req, id):
             cart=cart,
             amount=1,
         )
-        return redirect('/show_bakery')
+        return redirect('/ขนมทั้งหมด')
 
 @login_required(login_url='/login')
 def dec_cart(req,id):
