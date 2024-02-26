@@ -11,7 +11,8 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 def index(req):
-    return render(req , "index.html")
+    bakeries = Product.objects.all()
+    return render(req , "index.html",{'bakeries':bakeries})
 
 
 def about(req):
