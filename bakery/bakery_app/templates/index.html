@@ -14,7 +14,7 @@
         <h2 class="text-center text-3xl font-bold text-gray-800 mb-6">สินค้ายอดนิยม</h2>
         <div class="flex flex-wrap justify-center gap-8">
             {% for b in bakeries %}
-                {% if b.id == 1 or b.id == 2 or b.id == 3 or b.id == 6 %}
+                {% if b.id == 1 or b.id == 2 or b.id == 3 %}
                     <div class="flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden" style="flex: 1; max-width: 400px;">
                         <img src="{{ b.image.url }}" alt="Product" class="w-full h-64 object-cover">
                         <div class="p-4">
@@ -22,7 +22,9 @@
                             <p class="font text-[#c37960]">{{ b.descriptions }}</p>
                             <p class="mt-2 text-gray-600">ราคาชิ้นละ {{ b.price }} บาท</p>
                             <div class="mt-4 justify-between m-2">
-                                <button class="rounded py-1 px-3 bg-[#f0d7a7] mx-4">ใส่ตะกร้า</button>
+                                <button class="rounded py-1 px-3 bg-[#ffd78d] mx-4 hover:bg-[#ddba7a]">
+                                    <a href="{%url 'cart_add' b.id %}">ใส่ตะกร้า</a>
+                                </button>
                                 <a href="{% url 'show_bakery' %}" class="px-3 py-1 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600">เลือกสินค้าที่นี่</a>
                             </div>
                         </div>
@@ -38,7 +40,7 @@
 
     
 
-<section class="container mx-auto mt-4 ">
+<!-- <section class="container mx-auto mt-4 ">
     <h2 class="text-2xl font-bold mb-2">About Bakery</h2>
     <img src="https://c4.wallpaperflare.com/wallpaper/115/978/334/cake-pieces-nuts-white-background-wallpaper-preview.jpg" alt="Product" class="h-56 w-[20rem] float-left mr-4">
     <p class="mb-4  max-w-[calc(100%-30rem)]  px-5 py-1">Choco brownies เป็นขนมหวานที่มีลักษณะเป็นชิ้นสี่เหลี่ยมหรือสี่เหลี่ยมจัตุรัส 
@@ -48,7 +50,7 @@
         เพื่อเพิ่มคุณค่าทางโภชนาการให้กับ brownies ดังนั้น brownies เป็นขนมที่ทำง่ายและสามารถปรับปรุงรสชาติได้ตามความชอบของแต่ละคน 
         โดยนิยมรับประทานพร้อมกับกาแฟหรือนมสดครับ
     </p>
-</section>
+</section> -->
 
 
 

@@ -3,36 +3,60 @@
 {% block title %}ข้อมูลผู้ใช้{% endblock %}
 {% block main %}
 
-<body style="background-color: burlywood;">
-    <div class="flex justify-center items-center h-screen">
-        <form action="{% url 'profile' %}" method="POST" class="bg-burlywood p-10 rounded-lg shadow-md">
-            {% csrf_token %}
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold">เพิ่มที่อยู่</h2>
-            </div>
-            <div class="mb-4">
-                <label for="firstname" class="block text-sm font-medium text-gray-700">ชื่อ :</label>
-                <input type="text" name="firstname" id="firstname" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-            <div class="mb-4">
-                <label for="lastname" class="block text-sm font-medium text-gray-700">นามสกุล :</label>
-                <input type="text" name="lastname" id="lastname" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-            <div class="mb-4">
-                <label for="phone" class="block text-sm font-medium text-gray-700">เบอร์โทร :</label>
-                <input type="text" name="phone" id="phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-            <div class="mb-4">
-                <label for="address" class="block text-sm font-medium text-gray-700">ที่อยู่ :</label>
-                <input type="text" name="address" id="address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-            <div class="text-center">
-                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">OK</button>
-            </div>
-        </form>
-    </div>
+<section>
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <h1 class="text-2xl">แก้ไขที่อยู่</h1>
+        <div class="w-full bg-[#ffebcd] rounded-lg shadow-md dark:border md:mt-0 sm:max-w-md xl:p-0">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <form action="{% url 'profile' %}" method="POST" class="bg-[#ffebcd] p-10 rounded-lg">
+                    {% csrf_token %}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                ชื่อ
+                            </label>
+                            <input type="text" name="firstname" id="firstname"
+                            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        </div>
 
-</body>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                นามสกุล
+                            </label>
+                            <input type="text" name="lastname" id="lastname"
+                            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-phone">
+                                เบอร์โทรศัพท์
+                            </label>
+                            <p class="text-gray-600 text-xs italic">เบอร์โทรศัพท์</p>
+                            <input type="text" name="phone" id="phone"
+                            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                            ที่อยู่
+                            </label>
+                            <p class="text-gray-600 text-xs italic">แก้ไขที่อยู่</p>
+                            <input type="text" name="address" id="grid-password"
+                            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        </div>
+                    </div>
+                    <button type="submit"
+                    class="w-full text-white bg-[#ffd78d] hover:bg-[#ddba7a] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                    ตกลง</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+</section>
 
 
 {% endblock %}

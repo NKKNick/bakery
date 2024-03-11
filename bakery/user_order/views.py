@@ -55,8 +55,11 @@ def upload_slip(req):
         return render(req,'showqr.html')
 
 def order_history(req):
-    order = Order.objects.filter(customer=req.user.id)
-    return render(req,"order_history.html",{"order":order})
+    customer = Customer.objects.get(user=req.user)
+    order = Order.objects.filter(customer=customer)
+    print(order)
+    return render(req,"order_history.html", {"order":order})
+
 
 def order_detail(req,id):
     order = Order.objects.get(pk=id)

@@ -44,7 +44,7 @@ def add_cart(req, id):
         if cart_detail.amount < cart_detail.product.amount:
             cart_detail.amount += 1
             cart_detail.save()
-            return redirect('ขนมทั้งหมด')
+            return redirect('/ขนมทั้งหมด')
         else:
             return redirect('index')
 
