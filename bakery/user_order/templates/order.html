@@ -15,7 +15,7 @@
             </div>
             <div class="flex justify-center mt-5">
               <a href="{%url 'profile' %}" 
-              class="focus:outline-none text-gray-700 bg-[#ffd39a] hover:bg-[#deb887] focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1 dark:focus:ring-yellow-900">
+              class="focus:outline-none text-gray-700 bg-[#ffd39a] hover:bg-[#deb887] focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1">
               แก้ไขข้อมูล</a>
             </div>
         </div>
@@ -23,8 +23,8 @@
           <div class="py-2">
           <p class="py-2">รายละเอียดคำสั่งซื้อ</p>
           <div class="relative overflow-x-auto">
-              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                  <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                  <thead class="text-xs text-gray-900 uppercase">
                       <tr>
                           <th scope="col" class="px-6 py-3">
                               
@@ -45,11 +45,11 @@
                   </thead>
                   <tbody>
                     {% for i in cart %}
-                      <tr class="bg-white dark:bg-gray-800">
+                      <tr class="bg-white">
                           <td class="px-6 py-4">
                             <img src="{{i.product.image.url}}" alt="product" class="w-10 h-10">
                           </td>
-                          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
+                          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
                             {{i.product.name}}
                           </th>
                           <td class="px-6 py-4 text-center">
@@ -65,7 +65,7 @@
                     {% endfor %}
                   </tbody>
                   <tfoot>
-                    <tr class="font-semibold text-gray-900 dark:text-white">
+                    <tr class="font-semibold text-gray-900">
                       <td></td>
                       <td></td>
                       <th scope="row" class="px-6 py-3 text-base text-center">ทั้งหมด</th>
@@ -75,7 +75,7 @@
                 </tfoot>
               </table>
               <div class="flex justify-center mt-5">
-                <a href="{%url 'qr' %}" class="text-gray-700 bg-[#ffd39a] hover:bg-[#deb887] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                <a href="{%url 'qr' %}" class="text-gray-700 bg-[#ffd39a] hover:bg-[#deb887] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-1">
                   ชำระเงิน
                 </a>
               </div>

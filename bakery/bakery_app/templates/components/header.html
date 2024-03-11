@@ -6,7 +6,7 @@
         <!--Logo-->
       <div class="flex justify-between items-center">
         <a href="javascript:void(0)"><img src="{% static 'bakery_app/img/logo-bakery.png' %}" class='w-[5pc]'>
-        <a class="ml-[10px] font-bold text-yellow-100 text-2xl">Kru Waw Bakery</a>
+        <a class="ml-[10px] font-bold text-yellow-100 text-2xl">บ้านหนม Pam Pam</a>
       </a>
     </div>
       {% if user.is_authenticated %}
@@ -19,16 +19,16 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>  
         <!-- Dropdown menu -->
-        <div id="dropdownHover" class="hidden divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700" style="background-color: blanchedalmond;">
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 z-40" aria-labelledby="dropdownHoverButton">
+        <div id="dropdownHover" class="hidden divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700" style="background-color: #ffebcd;">
+            <ul class="py-2 text-sm text-gray-700 z-40" aria-labelledby="dropdownHoverButton">
               <li>
-                <a href="{%url 'order_history' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ประวัติการสั่งซื้อ</a>
+                <a href="{%url 'order_history' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#d4c4ab] dark:hover:text-white">ประวัติการสั่งซื้อ</a>
               </li>
               <li>
-                <a href="{%url 'profile' %}" class="z-40 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">เพิ่มที่อยู่/แก้ไขที่อยู่</a>
+                <a href="{%url 'profile' %}" class="z-40 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#d4c4ab] dark:hover:text-white">เพิ่มที่อยู่/แก้ไขที่อยู่</a>
               </li>
               <li>
-                <a href="{%url 'logout' %}" class="z-40 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ออกจากระบบ</a>
+                <a href="{%url 'logout' %}" class="z-40 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#d4c4ab] dark:hover:text-white">ออกจากระบบ</a>
               </li>
             </ul>
             
