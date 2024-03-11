@@ -4,10 +4,10 @@
 <section>
     <div class="h-[100vh]" >
         <div class="flex flex-col items-center py-5">
-            <h1 class="text-3xl py-5">ประวัติการสั่งซื้อ</h1>
+            <h1 class="text-3xl py-5">รายละเอียดสินค้า</h1>
             <div class="relative overflow-x-auto rounded">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead class="text-xs text-[#ffd78d] uppercase bg-[#af8266] ">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 รหัสคำสั่งซื้อ
@@ -28,8 +28,8 @@
                     </thead>
                     <tbody>
                         {% for i in detail %}
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr class="bg-[#ffeed7] border-b font-medium text-gray-800">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                 {{i.id}}
                             </th>
                             <td class="px-6 py-4">
@@ -44,17 +44,18 @@
                             <td class="px-6 py-4">
                                 {{i.subprice | intcomma}}
                             </td>
+                            
 
                         </tr>
                         {% endfor %}
                     </tbody>
                     <tfoot>
-                        <tr class="font-semibold text-gray-900 dark:text-white">
-                            <td></td>
-                            <td></td>
-                            <th scope="row" class="px-6 py-3 text-base bg-white border-b dark:bg-gray-800 dark:border-gray-700">สรุป</th>
-                            <td class="px-6 py-3 bg-white border-b dark:bg-gray-800 dark:border-gray-700">{{ total_amount }}</td>
-                            <td class="px-6 py-3 bg-white border-b dark:bg-gray-800 dark:border-gray-700">{{ total_price |intcomma}} ฿</td>
+                        <tr class="font-semibold text-gray-900 ">
+                            <th scope="row" class="px-6 py-3 text-base bg-[#ffeed7] border-b dark:bg-gray-800 dark:border-gray-700">สรุป</th>
+                            <td class="bg-[#ffeed7]"></td>
+                            <td class="bg-[#ffeed7]"></td>
+                            <td class="px-6 py-3 bg-[#ffeed7] border-b dark:bg-gray-800 dark:border-gray-700">{{ total_amount }}</td>
+                            <td class="px-6 py-3 bg-[#ffeed7] border-b dark:bg-gray-800 dark:border-gray-700">{{ total_price |intcomma}} ฿</td>
                         </tr>
                     </tfoot>
                 </table>
