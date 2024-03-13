@@ -6,8 +6,8 @@
         <div class="flex flex-col items-center py-5">
             <h1 class="text-3xl py-5">ประวัติการสั่งซื้อ</h1>
             <div class="relative overflow-x-auto rounded">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <table class="w-full text-base text-left rtl:text-right text-gray-800">
+                    <thead class="text-xs text-[#ffd78d] uppercase bg-[#af8266]">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 รหัสคำสั่งซื้อ
@@ -22,27 +22,28 @@
                                 ราคารวม
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                
+                                รายละเอียด
                             </th>
+
                         </tr>
                     </thead>
                     <tbody>
                         {% for i in order %}
-                        <tr class="bg-white border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {{i.id}}
+                        <tr class="bg-[#ffeed7] border-b">
+                            <th scope="row" class=" flex justify-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                {{i.id}} 
                             </th>
                             <td class="px-6 py-4">
                                 {{i.created |date:'d/m/Y'}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 ">
                                 {{i.get_status_display}}
                             </td>
                             <td class="px-6 py-4">
                                 {{i.total}}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{%url 'order_detail' i.id %}" class="font-medium text-blue-600">รายละเอียด</a>
+                                <a href="{%url 'order_detail' i.id %}" class=" rounded py-2 px-2 bg-[#ffd78d] font-bold text-[#98644F]">รายละเอียด</a>
                             </td>
                         </tr>
                         {% endfor %}
