@@ -55,9 +55,11 @@ def upload_slip(req):
         return render(req,'showqr.html')
 
 def order_history(req):
-    customer = Customer.objects.get(user=req.user)
-    order = Order.objects.filter(customer=customer)
-    print(order)
+    if check_profile(newuser=req.user):
+        customer = Customer.objects.get(user=req.user)
+        order = Order.objects.filter(customer=customer)
+    else:
+        return redirect('/ผู้ใช้/โปรไฟล์')
     return render(req,"order_history.html", {"order":order})
 
 
