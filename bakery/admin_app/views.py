@@ -24,13 +24,17 @@ def create_bakery(req):
 
 @permission_required('admin',login_url="/")
 def update_bakery(req,id):
-    bakeries = Product.objects.get(pk=id)
-    form = BakeryForm(req.POST, instance=bakeries)
-    if form.is_valid():
-        form.instance.owner = req.user
-        form.save()
-        return redirect('dashboard')
-    return render(req, 'update_bakery.html', {'bakeries':bakeries})
+    if req.method == "POST":       
+        bakeries = Product.objects.get(pk=id)
+        form = BakeryForm(req.POST,req.FILES,instance=bakeries)
+        if form.is_valid():
+            form.instance.owner = req.user
+            form.save()
+            return redirect('dashboard')
+    else:
+        bakeries = Product.objects.get(pk=id)
+        form = BakeryForm(instance=bakeries)
+    return render(req, 'update_bakery.html', {'bakeries':bakeries,'form':form})
 
 @permission_required('admin',login_url="/")
 def delete_bakery(req,id):
