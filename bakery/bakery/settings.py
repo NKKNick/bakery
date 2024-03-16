@@ -26,8 +26,8 @@ SECRET_KEY = "django-insecure-pw37!8zg%q@sdc70g$(z$ww(-9d7q*110vh07_$ts05k$mw4*0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://bakery-production-13d5.up.railway.app']
 
 # Application definition
 INSTALLED_APPS = [
